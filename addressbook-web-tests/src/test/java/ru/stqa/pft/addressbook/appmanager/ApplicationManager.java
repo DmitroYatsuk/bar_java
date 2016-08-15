@@ -13,6 +13,7 @@ public class ApplicationManager {
   private SessionHelper sessionHelper;
   private NavigationHelper navigationHelper;
   private GroupHelper groupHelper;
+  private ContactHelper contactHelper;
 
   public void init() {
     wd = new FirefoxDriver();
@@ -37,4 +38,7 @@ public class ApplicationManager {
     return navigationHelper;
   }
 
+  public ContactHelper getContactHelper() {
+    return contactHelper;
+  }
 }
