@@ -6,7 +6,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 /**
  * Created by Kiro on 12.08.16.
  */
-public class SessionHelper extends HelperBase {
+public class SessionHelper extends BaseHelper {
 
   public SessionHelper(FirefoxDriver wd) {
     super(wd);
