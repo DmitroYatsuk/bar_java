@@ -10,7 +10,7 @@ import ru.stqa.pft.addressbook.model.GroupData;
 public class ContactCreationTests extends TestBase{
 
   @Test
-  public void testGroupCreation() {
+  public void testContactCreation() {
 
     app.getNavigationHelper().gotoAddNewContactPage();
     app.getContactHelper().fillContactForm(new ContactData("fName", "mName", "lName"));

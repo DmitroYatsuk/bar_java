@@ -5,10 +5,9 @@ package ru.stqa.pft.addressbook.model;
  */
 public class ContactData {
 
-
-  private static String firstName;
-  private static String middleName;
-  private static String lastName;
+  private final String firstName;
+  private final String middleName;
+  private final String lastName;
 
 
   public ContactData(String firstName, String middleName, String lastName) {
@@ -18,15 +17,15 @@ public class ContactData {
     this.lastName = lastName;
   }
 
-  public static String getFirstName() {
+  public String getFirstName() {
     return firstName;
   }
 
-  public static String getMiddleName() {
+  public String getMiddleName() {
     return middleName;
   }
 
-  public static String getLastName() {
+  public String getLastName() {
     return lastName;
   }
 }

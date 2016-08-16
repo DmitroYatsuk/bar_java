@@ -20,9 +20,9 @@ public class ContactHelper extends HelperBase {
   }
 
   public void fillContactForm(ContactData contactData) {
-    type(By.name("firstname"), ContactData.getFirstName());
-    type(By.name("middlename"), ContactData.getMiddleName());
-    type(By.name("lastname"), ContactData.getLastName());
+    type(By.name("firstname"), contactData.getFirstName());
+    type(By.name("middlename"), contactData.getMiddleName());
+    type(By.name("lastname"), contactData.getLastName());
     //click(By.xpath(".//*[@id='content']/form/input[1]"));
   }
 
