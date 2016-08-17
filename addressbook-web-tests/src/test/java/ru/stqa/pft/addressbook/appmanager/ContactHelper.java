@@ -1,7 +1,7 @@
 package ru.stqa.pft.addressbook.appmanager;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.WebDriver;
 import ru.stqa.pft.addressbook.model.ContactData;
 
 /**
@@ -9,7 +9,7 @@ import ru.stqa.pft.addressbook.model.ContactData;
  */
 public class ContactHelper extends BaseHelper {
 
-  public ContactHelper(FirefoxDriver wd) {
+  public ContactHelper(WebDriver wd) {
     super(wd);
   }
 
@@ -49,10 +49,24 @@ public class ContactHelper extends BaseHelper {
   }
 
   public void submitContactModification() {
-    click(By.id("modifiy"));
+    click(By.name("modifiy"));
   }
 
   public void submitContactUpdate() {
-    click(By.id("update"));
+    click(By.name("update"));
+  }
+
+  public void editContactEntry(int i) {
+    click(By.xpath(".//*[@id='maintable']/tbody/tr[" + i + "]/td[8]/a/img"));
+  }
+
+  public void selectGroupForContact(int i) {
+    if (!wd.findElement(By.xpath("//div[@class='right']//select[normalize-space(.)='test1 test1 test1']//option[" + i + "]")).isSelected()) {
+      click(By.xpath("//div[@class='right']//select[normalize-space(.)='test1 test1 test1 test1']//option[" + i + "]"));
+    }
+  }
+
+  public void submitAdditionToGroup() {
+    click(By.name("add"));
   }
 }

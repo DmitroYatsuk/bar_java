@@ -1,14 +1,14 @@
 package ru.stqa.pft.addressbook.appmanager;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.WebDriver;
 
 /**
  * Created by Kiro on 12.08.16.
  */
 public class NavigationHelper extends BaseHelper {
 
-  public NavigationHelper(FirefoxDriver wd) {
+  public NavigationHelper(WebDriver wd) {
     super(wd);
   }
 
@@ -24,4 +24,8 @@ public class NavigationHelper extends BaseHelper {
     //click(By.linkText("add new"));
     click(By.xpath(".//*[@id='nav']/ul/li[2]/a"));
   }
+
+  public void gotoPageGroupN() {
+    click(By.xpath(".//*[@id='content']/div/i/a"));
   }
+}
