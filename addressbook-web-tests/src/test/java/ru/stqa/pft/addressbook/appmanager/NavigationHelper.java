@@ -24,4 +24,4 @@ public class NavigationHelper extends BaseHelper {
     //click(By.linkText("add new"));
     click(By.xpath(".//*[@id='nav']/ul/li[2]/a"));
   }
-}
+  }

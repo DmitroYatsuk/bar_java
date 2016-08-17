@@ -17,7 +17,6 @@ public class ContactHelper extends BaseHelper {
     type(By.name("firstname"), contactData.getFirstName());
     type(By.name("middlename"), contactData.getMiddleName());
     type(By.name("lastname"), contactData.getLastName());
-    //click(By.xpath(".//*[@id='content']/form/input[1]"));
   }
 
   public void submitContactCreation() {
@@ -25,4 +24,35 @@ public class ContactHelper extends BaseHelper {
   }
 
 
+  public void selectContactInList(int i) {
+    click(By.xpath(".//*[@id='" + i + "']"));
+  }
+
+  public void selectAllContactsInList() {
+    click(By.xpath(".//*[@id='MassCB']"));
+  }
+
+  public void submitContactDeletion() {
+    click(By.xpath(".//*[@id='content']/form[2]/div[2]/input"));
+  }
+
+  public void acceptContactDeletion() {
+    wd.switchTo().alert().accept();
+  }
+
+  public void dismissContactDeletion() {
+    wd.switchTo().alert().dismiss();
+  }
+
+  public void showContactDetails(int i) {
+    click(By.xpath(".//*[@id='maintable']/tbody/tr[" + i + "]/td[7]/a/img"));
+  }
+
+  public void submitContactModification() {
+    click(By.id("modifiy"));
+  }
+
+  public void submitContactUpdate() {
+    click(By.id("update"));
+  }
 }
