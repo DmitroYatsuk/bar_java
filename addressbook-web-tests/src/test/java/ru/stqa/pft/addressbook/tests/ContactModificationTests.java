@@ -9,8 +9,12 @@ import ru.stqa.pft.addressbook.model.ContactData;
 public class ContactModificationTests extends TestBase {
   @Test
   public void testContactModification(){
-    app.getContactHelper().editContactEntry(4);
-    app.getContactHelper().submitContactModification();
+
+    if (!app.getContactHelper().isThereAContact()) {
+      app.getContactHelper().createContact(new ContactData("test", null, null, "group1"), true);
+    }
+    app.getContactHelper().editContactEntry(2);
+//    app.getContactHelper().submitContactModification();
     app.getContactHelper().fillContactForm(new ContactData("1", "2", "3", null), false);
     app.getContactHelper().submitContactUpdate();
   }

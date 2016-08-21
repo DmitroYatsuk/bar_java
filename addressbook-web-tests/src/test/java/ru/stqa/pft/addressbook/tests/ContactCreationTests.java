@@ -13,8 +13,6 @@ public class ContactCreationTests extends TestBase{
   public void testContactCreation() {
 
     app.getNavigationHelper().gotoAddNewContactPage();
-    app.getContactHelper().fillContactForm(new ContactData("fName", "mName", "lName", "test1"), true);
-    app.getContactHelper().submitContactCreation();
-    app.getNavigationHelper().returnToHomePage();
+    app.getContactHelper().createContact(new ContactData("fName", "mName", "lName", "group1"), true);
   }
 }

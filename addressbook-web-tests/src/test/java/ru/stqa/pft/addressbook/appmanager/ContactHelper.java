@@ -33,8 +33,11 @@ public class ContactHelper extends BaseHelper {
   }
 
 
-  public void selectContactInList(int i) {
-    click(By.xpath(".//*[@id='" + i + "']"));
+  public void selectContact(int i) {
+    //click(By.xpath(".//*[@id='" + i + "']"));
+    if (!wd.findElement(By.name("selected[]")).isSelected()) {
+      click(By.name("selected[]"));
+    }
   }
 
   public void selectAllContactsInList() {
@@ -77,5 +80,22 @@ public class ContactHelper extends BaseHelper {
 
   public void submitAdditionToGroup() {
     click(By.name("add"));
+  }
+
+  public void createContact(ContactData contact, boolean creation) {
+    fillContactForm(contact, creation);
+    submitContactCreation();
+    returnToHomePage();
+  }
+
+  public void returnToHomePage() {
+    if(isElementPresent(By.id("maintable"))){
+      return;
+    }
+    click(By.linkText("home"));
+  }
+
+  public boolean isThereAContact() {
+    return isElementPresent(By.name("selected[]"));
   }
 }
