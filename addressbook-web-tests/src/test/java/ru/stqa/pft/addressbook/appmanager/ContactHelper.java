@@ -38,7 +38,7 @@ public class ContactHelper extends BaseHelper {
     }
 
 
-    public void selectContact(int i) {
+    public void selectContactById(int i) {
         //click(By.xpath(".//*[@id='" + i + "']"));
         if (!wd.findElement(By.name("selected[]")).isSelected()) {
             click(By.name("selected[]"));
@@ -73,8 +73,9 @@ public class ContactHelper extends BaseHelper {
         click(By.name("update"));
     }
 
-    public void editContactEntry(int i) {
-        click(By.xpath(".//*[@id='maintable']/tbody/tr[" + i + "]/td[8]/a/img"));
+    public void editContactEntryById(int id) {
+        //click(By.xpath(".//*[@id='maintable']/tbody/tr[" + i + "]/td[8]/a/img"));
+        click(By.cssSelector("a[href =\"edit.php?id=" + id + "\"]"));
     }
 
     public void selectGroupForContact(int i) {

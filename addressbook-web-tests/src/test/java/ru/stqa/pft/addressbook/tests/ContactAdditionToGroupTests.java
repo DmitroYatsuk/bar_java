@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 public class ContactAdditionToGroupTests extends TestBase{
   @Test
   public void testContactAdditionToGroup (){
-    app.getContactHelper().selectContact(12);
+    app.getContactHelper().selectContactById(12);
     app.getContactHelper().selectGroupForContact(2);
     app.getContactHelper().submitAdditionToGroup();
     app.getNavigationHelper().gotoPageGroupN();
