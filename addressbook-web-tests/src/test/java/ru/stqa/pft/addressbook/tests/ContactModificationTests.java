@@ -11,11 +11,11 @@ import java.util.List;
  * Created by Kiro on 16.08.16.
  */
 public class ContactModificationTests extends TestBase {
-  @Test
+  @Test (enabled = false)
   public void testContactModification() {
 
     if (!app.getContactHelper().isThereAContact()) {
-      app.getNavigationHelper().gotoAddNewContactPage();
+      app.goTo().gotoAddNewContactPage();
       app.getContactHelper().createContact(new ContactData("test", null, null, "group1"), true);
     }
     List<ContactData> before = app.getContactHelper().getContactList();

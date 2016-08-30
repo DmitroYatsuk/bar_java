@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
  */
 public class ContactDetailsTests extends TestBase{
 
-  @Test
+  @Test (enabled = false)
   public void testContactDetails(){
     app.getContactHelper().showContactDetails(4);
   }

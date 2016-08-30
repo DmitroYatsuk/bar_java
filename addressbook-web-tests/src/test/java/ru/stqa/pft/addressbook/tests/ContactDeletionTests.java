@@ -12,10 +12,10 @@ import java.util.List;
  */
 public class ContactDeletionTests extends TestBase {
 
-  @Test
+  @Test (enabled = false)
   public void testContactDeletion() {
     if (!app.getContactHelper().isThereAContact()) {
-      app.getNavigationHelper().gotoAddNewContactPage();
+      app.goTo().gotoAddNewContactPage();
       app.getContactHelper().createContact(new ContactData("test", null, null, "group1"), true);
     }
     List<ContactData> before = app.getContactHelper().getContactList();

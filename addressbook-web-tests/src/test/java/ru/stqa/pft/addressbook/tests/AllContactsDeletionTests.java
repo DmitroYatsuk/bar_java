@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
  */
 public class AllContactsDeletionTests extends TestBase {
 
-  @Test
+  @Test (enabled = false)
   public void testContactDeletion(){
 
     app.getContactHelper().selectAllContactsInList();
