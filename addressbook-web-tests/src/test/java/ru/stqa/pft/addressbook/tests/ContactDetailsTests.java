@@ -9,6 +9,6 @@ public class ContactDetailsTests extends TestBase{
 
   @Test (enabled = false)
   public void testContactDetails(){
-    app.getContactHelper().showContactDetails(4);
+    app.contact().showContactDetails(4);
   }
 }

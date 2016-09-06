@@ -9,9 +9,9 @@ public class ContactAdditionToGroupTests extends TestBase{
 
   @Test (enabled = false)
   public void testContactAdditionToGroup (){
-    app.getContactHelper().selectContactById(12);
-    app.getContactHelper().selectGroupForContact(2);
-    app.getContactHelper().submitAdditionToGroup();
+    app.contact().selectContactById(12);
+    app.contact().selectGroupForContact(2);
+    app.contact().submitAdditionToGroup();
     app.goTo().gotoPageGroupN();
   }
 }

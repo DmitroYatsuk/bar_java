@@ -1,7 +1,6 @@
 package ru.stqa.pft.addressbook.tests;
 
 import org.testng.annotations.Test;
-import ru.stqa.pft.addressbook.model.ContactData;
 
 /**
  * Created by Kiro on 16.08.16.
@@ -9,7 +8,7 @@ import ru.stqa.pft.addressbook.model.ContactData;
 public class ContactEditionTests extends TestBase{
   @Test (enabled = false)
   public void testContactEdition(){
-    app.getContactHelper().selectGroupForContact(2);
-    app.getContactHelper().submitAdditionToGroup();
+    app.contact().selectGroupForContact(2);
+    app.contact().submitAdditionToGroup();
   }
 }

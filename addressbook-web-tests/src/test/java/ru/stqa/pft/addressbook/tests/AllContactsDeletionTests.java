@@ -10,10 +10,10 @@ public class AllContactsDeletionTests extends TestBase {
   @Test (enabled = false)
   public void testContactDeletion(){
 
-    app.getContactHelper().selectAllContactsInList();
-    app.getContactHelper().submitContactDeletion();
-    app.getContactHelper().acceptContactDeletion();
-    //app.getContactHelper().dismissContactDeletion();
+    app.contact().selectAllContactsInList();
+    app.contact().submitContactDeletion();
+    app.contact().acceptContactDeletion();
+    //app.contact().dismissContactDeletion();
 
   }
 }
