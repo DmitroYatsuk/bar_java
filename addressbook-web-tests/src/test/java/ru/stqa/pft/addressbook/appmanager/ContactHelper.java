@@ -106,6 +106,19 @@ public class ContactHelper extends BaseHelper {
         return isElementPresent(By.name("selected[]"));
     }
 
+    public List<ContactData> list() {
+        List<ContactData> contacts = new ArrayList<ContactData>();
+        List<WebElement> rows = wd.findElements(By.name("entry"));
+        for (WebElement row : rows) {
+            List<WebElement> cells = row.findElements(By.tagName("td"));
+            int id = Integer.parseInt(cells.get(0).findElement(By.tagName("input")).getAttribute("value"));
+            String lastName = cells.get(1).getText();
+            String firstName = cells.get(2).getText();
+            contacts.add(new ContactData().withId(id).withFirstName(firstName).withLastName(lastName));
+        }
+        return contacts;
+    }
+
     public Contacts all() {
         Contacts contacts = new Contacts();
         List<WebElement> rows = wd.findElements(By.name("entry"));

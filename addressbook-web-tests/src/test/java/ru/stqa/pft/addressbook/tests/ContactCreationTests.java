@@ -16,7 +16,7 @@ import static org.hamcrest.CoreMatchers.*;
  */
 public class ContactCreationTests extends TestBase {
 
-  @Test (enabled = false)
+  @Test
   public void testContactCreation() {
     Contacts before = app.contact().all();
     app.goTo().gotoAddNewContactPage();
