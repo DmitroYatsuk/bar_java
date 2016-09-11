@@ -131,4 +131,18 @@ public class ContactHelper extends BaseHelper {
         }
         return contacts;
     }
+
+    public void delete(ContactData contact) {
+        selectContactById(contact.getId());
+        submitContactDeletion();
+        acceptContactDeletion();
+    }
+
+    public void modify(ContactData contact) {
+        selectContactById(contact.getId());
+        editContactEntryById(contact.getId());
+        fillContactForm(contact, false);
+        submitContactUpdate();
+        returnToHomePage();
+    }
 }

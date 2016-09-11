@@ -22,17 +22,17 @@ public class Contacts extends ForwardingSet<ContactData>{
 
   @Override
   protected Set<ContactData> delegate() {
-    return delegate();
+    return delegate;
   }
 
   public Contacts withAdded(ContactData contact) {
-    Contacts contacts = new Contacts();
+    Contacts contacts = new Contacts(this);
     contacts.add(contact);
     return contacts;
   }
 
   public Contacts without(ContactData contact) {
-    Contacts contacts = new Contacts();
+    Contacts contacts = new Contacts(this);
     contacts.remove(contact);
     return contacts;
   }
