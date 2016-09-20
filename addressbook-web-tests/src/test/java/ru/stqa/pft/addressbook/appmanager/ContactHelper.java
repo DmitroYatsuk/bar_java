@@ -149,4 +149,8 @@ public class ContactHelper extends BaseHelper {
   public int count() {
       return wd.findElements(By.name("selected[]")).size();
   }
+
+  public ContactData infoFromEditForm(ContactData contact) {
+    return null;
+  }
 }
