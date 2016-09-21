@@ -26,10 +26,16 @@ public class ContactPhoneTests extends TestBase{
     app.contact().returnToHomePage();
     ContactData contact = app.contact().all().iterator().next();
     ContactData contactInfoFromEditForm = app.contact().infoFromEditForm(contact);
-    assertThat(contact.getHomePhone(), equalTo(cleaned(contactInfoFromEditForm.getHomePhone())));
+    assertThat(contact.getAllPhones(), equalTo(mergePhones(contactInfoFromEditForm)));
     assertThat(contact.getMobilePhone(), equalTo(cleaned(contactInfoFromEditForm.getMobilePhone())));
     assertThat(contact.getWorkPhone(), equalTo(cleaned(contactInfoFromEditForm.getWorkPhone())));
   }
+
+  // TODO: 21.09.16  
+  private <T> String mergePhones(ContactData contact) {
+    return null;
+  }
+
 
   public String cleaned (String phone){
     return phone.replaceAll("\\s","").replaceAll("[-()]","");
