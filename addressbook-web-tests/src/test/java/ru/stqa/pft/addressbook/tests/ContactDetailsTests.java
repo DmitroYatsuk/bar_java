@@ -13,7 +13,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 /**
  * Created by Kiro on 16.08.16.
  */
-public class ContactDetailsTests extends TestBase{
+public class ContactDetailsTests extends TestBase {
 
   @BeforeMethod
   public void insurePreconditions() {
@@ -27,27 +27,23 @@ public class ContactDetailsTests extends TestBase{
     }
   }
 
+  // TODO: 22.09.16 to fix
   @Test
   public void testContactDetails() {
     app.contact().returnToHomePage();
     ContactData contact = app.contact().all().iterator().next();
-    app.contact().showContactDetailsById(contact.getId());
     ContactData contactInfoFromDetailsForm = app.contact().infoFromDetailsForm(contact);
+    ContactData contactInfoFromEditForm = app.contact().infoFromEditForm(contact);
 
-    assertThat(contact.getAddress(), equalTo(contactInfoFromDetailsForm.getAddress()));
-    assertThat(contact.getAllPhones(), equalTo(mergePhones(contactInfoFromDetailsForm)));
-    assertThat(contact.getAllEmails(), equalTo(mergeEmails(contactInfoFromDetailsForm)));
+    assertThat(mergeAllContactData(contactInfoFromEditForm), equalTo(contactInfoFromDetailsForm.getAllContactDetails()));
   }
 
-  private String mergePhones(ContactData contact) {
-    return Arrays.asList(contact.getHomePhone(), contact.getMobilePhone(), contact.getWorkPhone())
-            .stream().filter((s) -> !s.equals(""))
-            .map(ContactFieldsTests::cleaned)
-            .collect(Collectors.joining("\n"));
-  }
-
-  private String mergeEmails(ContactData contact) {
-    return Arrays.asList(contact.getEmail(), contact.getEmail2(), contact.getEmail3())
+  private String mergeAllContactData(ContactData contact) {
+    if (!contact.getHomePhone().equals("")) contact.withHomePhone("H: "+contact.getHomePhone());
+    if (!contact.getMobilePhone().equals("")) contact.withMobilePhone("M: "+contact.getMobilePhone());
+    if (!contact.getWorkPhone().equals("")) contact.withWorkPhone("W: "+contact.getWorkPhone());
+    return Arrays.asList(contact.getFirstName() + " " + contact.getLastName() + "\n" + contact.getAddress() + "\n",
+            contact.getHomePhone(), contact.getMobilePhone(), contact.getWorkPhone())
             .stream().filter((s) -> !s.equals(""))
             .collect(Collectors.joining("\n"));
   }
@@ -56,4 +52,4 @@ public class ContactDetailsTests extends TestBase{
     return phone.replaceAll("\\s", "").replaceAll("[-()]", "");
   }
 
-  }
+}

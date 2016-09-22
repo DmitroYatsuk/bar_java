@@ -150,7 +150,7 @@ public ContactData withEmail3(String email3) {
     return allEmails;
   }
 
-  public String getContactDetails() {
+  public String getAllContactDetails() {
     return contactDetails;
   }
 
