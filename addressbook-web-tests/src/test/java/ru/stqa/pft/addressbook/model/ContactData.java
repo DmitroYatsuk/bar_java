@@ -77,7 +77,7 @@ public class ContactData {
     return this;
   }
 
-public ContactData withEmail3(String email3) {
+  public ContactData withEmail3(String email3) {
     this.email3 = email3;
     return this;
   }
@@ -185,7 +185,6 @@ public ContactData withEmail3(String email3) {
     result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
     return result;
   }
-
 
 
 }

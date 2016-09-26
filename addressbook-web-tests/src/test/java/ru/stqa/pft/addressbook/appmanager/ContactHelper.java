@@ -38,6 +38,18 @@ public class ContactHelper extends BaseHelper {
     }
   }
 
+  public void fillContactForm(ContactData contactData) {
+    type(By.name("firstname"), contactData.getFirstName());
+    type(By.name("middlename"), contactData.getMiddleName());
+    type(By.name("lastname"), contactData.getLastName());
+    type(By.name("address"), contactData.getAddress());
+    type(By.name("home"), contactData.getHomePhone());
+    type(By.name("mobile"), contactData.getMobilePhone());
+    type(By.name("work"), contactData.getWorkPhone());
+    type(By.name("email"), contactData.getEmail());
+    type(By.name("email2"), contactData.getEmail2());
+    type(By.name("email3"), contactData.getEmail3());
+  }
 
   public void submitContactCreation() {
     click(By.name("submit"));
@@ -97,6 +109,12 @@ public class ContactHelper extends BaseHelper {
 
   public void createContact(ContactData contact, boolean creation) {
     fillContactForm(contact, creation);
+    submitContactCreation();
+    returnToHomePage();
+  }
+
+  public void createContact(ContactData contact) {
+    fillContactForm(contact);
     submitContactCreation();
     returnToHomePage();
   }
