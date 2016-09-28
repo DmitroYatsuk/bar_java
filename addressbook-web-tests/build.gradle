@@ -9,5 +9,7 @@ dependencies {
     compile 'org.testng:testng:6.9.10'
     compile 'org.seleniumhq.selenium:selenium-java:2.53.1'
     compile 'org.hamcrest:java-hamcrest:2.0.0.0'
-    compile 'com.beust:jcommander:1.48'
+    compile 'de.weltraumschaf.commons:jcommander:2.2.0'
+    //compile 'org.webjars.npm:xstream:5.1.4'
+    compile 'com.thoughtworks.xstream:xstream:1.4.9'
 }
