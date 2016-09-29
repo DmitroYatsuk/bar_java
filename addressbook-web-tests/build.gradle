@@ -10,6 +10,6 @@ dependencies {
     compile 'org.seleniumhq.selenium:selenium-java:2.53.1'
     compile 'org.hamcrest:java-hamcrest:2.0.0.0'
     compile 'de.weltraumschaf.commons:jcommander:2.2.0'
-    //compile 'org.webjars.npm:xstream:5.1.4'
     compile 'com.thoughtworks.xstream:xstream:1.4.9'
+    compile 'org.immutables:gson:2.3.2'
 }
