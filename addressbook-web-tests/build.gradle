@@ -24,4 +24,5 @@ task testContacts(type: Test) {
     useTestNG {
         suites 'src/test/resources/testng-contacts.xml'
     }
+    systemProperty 'browser', "${browser}" //invocation of gradlew property field {browser} and converting to VM property
 }
