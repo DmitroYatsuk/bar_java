@@ -6,6 +6,7 @@ import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
 
+import java.io.File;
 import java.util.Comparator;
 import java.util.List;
 
@@ -18,20 +19,22 @@ import static org.hamcrest.CoreMatchers.*;
 public class ContactModificationTests extends TestBase {
   @BeforeMethod
   public void insurePreconditions() {
-    if (app.contact().list().size() == 0) {
+    if (app.db().contacts().size() == 0) {
       app.goTo().gotoAddNewContactPage();
-      app.contact().createContact(new ContactData().withFirstName("test").withGroup("group1"), true);
+      app.contact().createContact(new ContactData().withFirstName("test")
+              .withPhoto(new File("src/test/resources/test_photo.png")));
     }
   }
 
   @Test
   public void testContactModification() {
-    Contacts before = app.contact().all();
+    Contacts before = app.db().contacts();
     ContactData modifiedContact =  before.iterator().next();
-    ContactData contact = new ContactData().withId(modifiedContact.getId()).withFirstName("Ivan").withLastName("Ivanov");
+    ContactData contact = new ContactData().withId(modifiedContact.getId()).withFirstName("Ivan").withLastName("Ivanov")
+            .withPhoto(new File("src/test/resources/test_photo.png"));
     app.contact().modify(contact);
     assertThat(app.contact().count(), equalTo(before.size()));
-    Contacts after = app.contact().all();
+    Contacts after = app.db().contacts();
     before.remove(modifiedContact);
     before.add(contact);
     assertThat(after, equalTo(before));

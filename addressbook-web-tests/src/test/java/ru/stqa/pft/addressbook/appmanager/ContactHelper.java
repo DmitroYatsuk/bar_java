@@ -1,5 +1,6 @@
 package ru.stqa.pft.addressbook.appmanager;
 
+import com.sun.xml.internal.bind.v2.TODO;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -34,7 +35,9 @@ public class ContactHelper extends BaseHelper {
     type(By.name("email3"), contactData.getEmail3());
     if (creation) {
       new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
-    } else {
+    }
+    // TODO WTF???
+    else {
       Assert.assertFalse(isElementPresent(By.name("new_group")));
     }
   }
