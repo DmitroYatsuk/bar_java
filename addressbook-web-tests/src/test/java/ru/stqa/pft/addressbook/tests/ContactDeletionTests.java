@@ -7,6 +7,7 @@ import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
 
+import java.io.File;
 import java.util.Comparator;
 import java.util.List;
 
@@ -19,19 +20,20 @@ import static org.hamcrest.CoreMatchers.*;
 public class ContactDeletionTests extends TestBase {
   @BeforeMethod
   public void insurePreconditions() {
-    if (app.contact().list().size() == 0) {
+    if (app.db().contacts().size() == 0) {
       app.goTo().gotoAddNewContactPage();
-      app.contact().createContact(new ContactData().withFirstName("test").withGroup("group1"), true);
+      app.contact().createContact(new ContactData().withFirstName("test")
+              .withPhoto(new File("src/test/resources/test_photo.png")));
     }
   }
 
   @Test
   public void testContactDeletion() {
-    Contacts before = app.contact().all();
+    Contacts before = app.db().contacts();
     ContactData deletedContact = before.iterator().next();
     app.contact().delete(deletedContact);
     assertThat(app.contact().count(), equalTo(before.size() - 1));
-    Contacts after = app.contact().all();
+    Contacts after = app.db().contacts();
     assertThat(after, equalTo(before.without(deletedContact)));
    }
 }
