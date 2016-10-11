@@ -172,7 +172,7 @@ public class ContactHelper extends BaseHelper {
   }
 
   public void modify(ContactData contact) {
-    selectContactById(contact.getId());
+    //selectContactById(contact.getId());
     editContactEntryById(contact.getId());
     fillContactForm(contact, false);
     submitContactUpdate();

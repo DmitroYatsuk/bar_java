@@ -38,5 +38,6 @@ public class ContactModificationTests extends TestBase {
     before.remove(modifiedContact);
     before.add(contact);
     assertThat(after, equalTo(before));
+    verifyContactListInUI();
   }
 }
