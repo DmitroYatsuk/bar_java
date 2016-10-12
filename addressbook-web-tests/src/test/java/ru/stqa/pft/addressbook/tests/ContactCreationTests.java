@@ -28,7 +28,7 @@ import static org.hamcrest.CoreMatchers.*;
  */
 public class ContactCreationTests extends TestBase {
 
-  @DataProvider
+/*  @DataProvider
   public Iterator<Object[]> validContactsFromCsv() throws IOException {
     List<Object[]> list = new ArrayList<>();
     try (BufferedReader reader = new BufferedReader(new FileReader(new File("src/test/resources/contacts.csv")))) {
@@ -45,7 +45,7 @@ public class ContactCreationTests extends TestBase {
       }
       return list.iterator();
     }
-  }
+  }*/
 
   @DataProvider
   public Iterator<Object[]> validContactsFromXml() throws IOException {

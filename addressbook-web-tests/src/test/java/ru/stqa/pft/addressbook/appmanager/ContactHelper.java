@@ -33,13 +33,13 @@ public class ContactHelper extends BaseHelper {
     type(By.name("email"), contactData.getEmail());
     type(By.name("email2"), contactData.getEmail2());
     type(By.name("email3"), contactData.getEmail3());
-    if (creation) {
+/*    if (creation) {
       new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
     }
     // TODO WTF???
     else {
       Assert.assertFalse(isElementPresent(By.name("new_group")));
-    }
+    }*/
   }
 
   public void fillContactForm(ContactData contactData) {

@@ -19,10 +19,9 @@ public class ContactFieldsTests extends TestBase {
     if (app.contact().list().size() == 0) {
       app.goTo().gotoAddNewContactPage();
       app.contact().createContact(new ContactData().withFirstName("test").withLastName("testov")
-              .withAddress("Test city, str. Test, bld. 20-160")
+              .withAddress("Test city, str. Test, bld. 123-456")
               .withHomePhone("111").withMobilePhone("222").withWorkPhone("333")
-              .withEmail("test1@test.com").withEmail2("test.2@test.com").withEmail3("test_3@test.com")
-              .withGroup("group1"), true);
+              .withEmail("test1@test.com").withEmail2("test.2@test.com").withEmail3("test_3@test.com"));
     }
   }
 
