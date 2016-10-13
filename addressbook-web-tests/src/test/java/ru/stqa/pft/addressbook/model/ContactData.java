@@ -30,7 +30,7 @@ public class ContactData {
   @Expose
   @Column(name = "lastname")
   private String lastName;
-
+  @Expose
   @ManyToMany(fetch = FetchType.EAGER)
   @JoinTable(name = "address_in_groups",
           joinColumns = @JoinColumn(name = "id"), inverseJoinColumns = @JoinColumn(name = "group_id"))
@@ -246,4 +246,8 @@ public class ContactData {
   }
 
 
+  public ContactData inGroup(GroupData group) {
+    groups.add(group);
+    return this;
+  }
 }

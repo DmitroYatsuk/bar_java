@@ -33,13 +33,17 @@ public class ContactHelper extends BaseHelper {
     type(By.name("email"), contactData.getEmail());
     type(By.name("email2"), contactData.getEmail2());
     type(By.name("email3"), contactData.getEmail3());
-/*    if (creation) {
-      new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
+    if (creation) {
+      if (contactData.getGroups().size() > 0) {
+        Assert.assertTrue(contactData.getGroups().size() == 1);
+        new Select(wd.findElement(By.name("new_group")))
+                .selectByVisibleText(contactData.getGroups().iterator().next().getName());
+      }
     }
     // TODO WTF???
     else {
       Assert.assertFalse(isElementPresent(By.name("new_group")));
-    }*/
+    }
   }
 
   public void fillContactForm(ContactData contactData) {
@@ -103,9 +107,9 @@ public class ContactHelper extends BaseHelper {
   }
 
   public void selectGroupForContact(int i) {
-    if (!wd.findElement(By.xpath("//div[@class='right']//select[normalize-space(.)='test1 test1 test1']//option[" + i + "]")).isSelected()) {
-      click(By.xpath("//div[@class='right']//select[normalize-space(.)='test1 test1 test1 test1']//option[" + i + "]"));
-    }
+    //if (!wd.findElement(By.xpath("//div[@class='right']//select[normalize-space(.)='test 0 test 1 test 2']//option[" + i + "]")).isSelected()) {
+      click(By.xpath("//div[@class='right']//select[normalize-space(.)='test 0 test 1 test 2']//option[" + i + "]"));
+    //}
   }
 
   public void submitAdditionToGroup() {
