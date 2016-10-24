@@ -38,6 +38,7 @@ public class ContactAddingToGroups extends TestBase {
     app.contact().selectContactById(contact.getId());
     app.contact().selectGroupForContact(1); //from 1 to 3
     app.contact().submitAdditionToGroup();
+    //TODO to complete task#18
     assertThat(app.contact().count(), equalTo(before.size()));
     Contacts after = app.db().contacts();
     System.out.println("Contact name is " + contact.getFirstName() + " " + contact.getLastName()
