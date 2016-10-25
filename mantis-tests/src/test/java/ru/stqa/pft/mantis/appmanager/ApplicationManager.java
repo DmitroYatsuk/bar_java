@@ -41,14 +41,19 @@ public class ApplicationManager {
     } else if (browser.equals(BrowserType.IE)) {
       wd = new InternetExplorerDriver();
     }
-
-
     wd.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     wd.get(properties.getProperty("web.baseUrl"));
   }
 
-
   public void stop() {
     wd.quit();
+  }
+
+  public HttpSession newSession(){
+    return new HttpSession(this);
+  }
+
+  public String getProperty(String key) {
+    return properties.getProperty(key);
   }
 }
