@@ -1,5 +1,6 @@
 package ru.stqa.pft.mantis.appmanager;
 
+import com.sun.xml.internal.bind.v2.TODO;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -47,7 +48,7 @@ public class HttpSession {
       response.close();
     }
   }
-//TODO repair return statement
+//TODO: repair return statement
   public boolean isLoggedInAs(String username) throws IOException {
     HttpGet get = new HttpGet(app.getProperty("web.baseUrl") + "/my_view_page.php");
     CloseableHttpResponse response = httpClient.execute(get);
