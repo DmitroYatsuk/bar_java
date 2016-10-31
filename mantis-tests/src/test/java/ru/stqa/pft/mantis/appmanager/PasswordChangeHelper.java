@@ -22,16 +22,18 @@ public class PasswordChangeHelper extends BaseHelper {
     click(By.cssSelector(".button"));
   }
 
-  public void manageUsers() {
+  public String manageUsers() {
     wd.get(app.getProperty("web.baseUrl") + "/manage_user_page.php");
     List<WebElement> accounts = new ArrayList<>(wd.findElements(By.cssSelector("#manage-user-div>table>tbody>tr>td>a")));
+    String text ="";
     for (WebElement account : accounts) {
-      String text = account.getText();
+      text = account.getText();
       if (!account.getText().equals(app.getProperty("web.adminLogin"))) {
         click(By.xpath(String.format("//a[contains(text(),'%s')]", text)));
         break;
       }
     }
+    return text;
   }
 
   public void resetPassword() {

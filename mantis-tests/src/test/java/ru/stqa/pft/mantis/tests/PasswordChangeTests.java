@@ -6,6 +6,7 @@ import org.testng.annotations.Test;
 import ru.lanwen.verbalregex.VerbalExpression;
 import ru.stqa.pft.mantis.model.MailMessage;
 
+import java.io.IOException;
 import java.util.List;
 
 import static org.testng.Assert.assertTrue;
@@ -21,17 +22,21 @@ public class PasswordChangeTests extends TestBase {
   }
 
   @Test
-  public void testPasswordChange() {
-    String user = app.getProperty("web.adminLogin");
+  public void testPasswordChange() throws IOException {
+    String admin = app.getProperty("web.adminLogin");
     String password = app.getProperty("web.adminPassword");
 
-    app.passwordChange().loginAsAdmin(user, password);
-    app.passwordChange().manageUsers();
+    String user ="";
+    String newUserPassword = "test";
+
+    app.passwordChange().loginAsAdmin(admin, password);
+    user = app.passwordChange().manageUsers();
     app.passwordChange().resetPassword();
-    List<MailMessage> mailMessages = app.mail().waitForMail(2, 10000);
+    List<MailMessage> mailMessages = app.mail().waitForMail(1, 10000);
     String confirmationLink = findConfirmationLink(mailMessages);
-/*    app.registration().finish(confirmationLink, password);
-    assertTrue(app.newSession().login(user, password));*/
+
+    app.registration().finish(confirmationLink, newUserPassword);
+    assertTrue(app.newSession().login(user, newUserPassword));
   }
 
   private String findConfirmationLink(List<MailMessage> mailMessages) {
