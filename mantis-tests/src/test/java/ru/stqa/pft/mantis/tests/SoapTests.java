@@ -1,6 +1,5 @@
 package ru.stqa.pft.mantis.tests;
 
-import org.testng.Assert;
 import org.testng.annotations.Test;
 import ru.stqa.pft.mantis.model.Issue;
 import ru.stqa.pft.mantis.model.Project;
@@ -31,6 +30,7 @@ public class SoapTests extends TestBase {
     Set<Project> projectDatas = app.soap().getProjects();
     Issue issue = new Issue().withSummary("Test issue").withDescription("Test issue description")
             .withProject(projectDatas.iterator().next());
+    skipIfNotFixed(issue.getId());
     Issue created = app.soap().addIssue(issue);
     assertEquals(issue.getSummary(), created.getSummary());
   }
