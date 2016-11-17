@@ -1,9 +1,11 @@
 package ru.stqa.pft.rest;
 
+import org.apache.http.client.fluent.Executor;
 import org.apache.http.client.fluent.Request;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.io.IOException;
 import java.util.Set;
 
 /**
@@ -14,27 +16,27 @@ public class RestTests {
   private Set<Issue> isuues;
 
   @Test
-  public void testCreateIssue() {
-    Set<Issue> oldIssues = getIsuues();
+  public void testCreateIssue() throws IOException {
+    Set<Issue> oldIssues = getIssues();
     Issue newIssue = new Issue();
     int issueId = createIssue(newIssue);
-    Set<Issue> newIssues = getIsuues();
+    Set<Issue> newIssues = getIssues();
     oldIssues.add(newIssue.withId(issueId));
     Assert.assertEquals(newIssues, oldIssues);
   }
 
-  public Set<Issue> getIsuues() {
-   // Execute a GET with timeout settings and return response content as String.
-    Request.Get("http://somehost/")
-            .connectTimeout(1000)
-            .socketTimeout(1000)
-            .execute().returnContent().asString();
+  public Set<Issue> getIssues() throws IOException {
+    String json = getExecutor().execute(Request.Get("http://demo.bugify.com/api/issues.json")).returnContent().asString();
+    return null;
+  }
+
+  private Executor getExecutor() {
+    return Executor.newInstance().auth("LSGjeU4yP1X493ud1hNniA==", "");
   }
 
   private int createIssue(Issue newIssue) {
     return 0;
   }
-
 
 
 }
