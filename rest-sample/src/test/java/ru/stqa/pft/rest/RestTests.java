@@ -1,7 +1,12 @@
 package ru.stqa.pft.rest;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
+import com.google.gson.reflect.TypeToken;
 import org.apache.http.client.fluent.Executor;
 import org.apache.http.client.fluent.Request;
+import org.apache.http.message.BasicNameValuePair;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -18,7 +23,7 @@ public class RestTests {
   @Test
   public void testCreateIssue() throws IOException {
     Set<Issue> oldIssues = getIssues();
-    Issue newIssue = new Issue();
+    Issue newIssue = new Issue().withSubject("Test").withDescription("New test issue");
     int issueId = createIssue(newIssue);
     Set<Issue> newIssues = getIssues();
     oldIssues.add(newIssue.withId(issueId));
@@ -27,15 +32,23 @@ public class RestTests {
 
   public Set<Issue> getIssues() throws IOException {
     String json = getExecutor().execute(Request.Get("http://demo.bugify.com/api/issues.json")).returnContent().asString();
-    return null;
+    JsonElement jsonElement = new JsonParser().parse(json);
+    JsonElement issues = jsonElement.getAsJsonObject().get("issues");
+    return new Gson().fromJson(issues, new TypeToken<Set<Issue>>() {
+    }.getType());
   }
 
   private Executor getExecutor() {
     return Executor.newInstance().auth("LSGjeU4yP1X493ud1hNniA==", "");
   }
 
-  private int createIssue(Issue newIssue) {
-    return 0;
+  private int createIssue(Issue newIssue) throws IOException {
+    String json = getExecutor().execute(Request.Post("http://demo.bugify.com/api/issues.json")
+            .bodyForm(new BasicNameValuePair("subject", newIssue.getSubject()),
+                      new BasicNameValuePair("description", newIssue.getDescription())))
+            .returnContent().asString();
+    JsonElement jsonElement = new JsonParser().parse(json);
+    return jsonElement.getAsJsonObject().get("issue_id").getAsInt();
   }
 
 
