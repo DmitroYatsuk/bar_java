@@ -12,7 +12,7 @@ import java.util.Set;
  */
 public class Contacts extends ForwardingSet<ContactData> {
 
-  private final Set<ContactData> delegate;
+  private Set<ContactData> delegate;
 
   public Contacts(Contacts contacts) {
     this.delegate = new HashSet<ContactData>(contacts.delegate());
